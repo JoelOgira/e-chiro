@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "e-chiro",
-  description: "Your one0stop e-commerce store",
+  description: "Your one-stop e-commerce store",
 };
 
 export default function MainLayout({
@@ -13,7 +13,7 @@ export default function MainLayout({
 }>) {
   return (
     <div className="">
-        {children}
+      {children}
     </div>
   );
 }
