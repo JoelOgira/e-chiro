@@ -1,10 +1,4 @@
-import type { Metadata } from "next";
-import "./globals.css";
-
-export const metadata: Metadata = {
-  title: "e-chiro",
-  description: "Your one-stop e-commerce store",
-};
+import MaxWidthWrapper from "@/components/max-width-wrapper"
 
 export default function MainLayout({
   children,
@@ -12,8 +6,8 @@ export default function MainLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="">
-      {children}
-    </div>
+    <MaxWidthWrapper className="flex flex-col">
+      <main>{children}</main>
+    </MaxWidthWrapper>
   );
 }
