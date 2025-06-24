@@ -1,4 +1,6 @@
-import MaxWidthWrapper from "@/components/max-width-wrapper"
+import Footer from "@/components/footer";
+import MaxWidthWrapper from "@/components/max-width-wrapper";
+import Header from "@/components/shared/header/header";
 
 export default function MainLayout({
   children,
@@ -6,8 +8,12 @@ export default function MainLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <MaxWidthWrapper className="flex flex-col">
-      <main>{children}</main>
-    </MaxWidthWrapper>
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <main className="flex-1">
+        <MaxWidthWrapper>{children}</MaxWidthWrapper>
+      </main>
+      <Footer />
+    </div>
   );
 }
