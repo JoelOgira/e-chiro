@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { APP_NAME, APP_DESCRIPTION } from "@/lib/app-constants";
+import { APP_NAME, APP_DESCRIPTION, SERVER_URL } from "@/lib/app-constants";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -16,9 +16,7 @@ export const metadata: Metadata = {
     default: APP_NAME,
   },
   description: `${APP_DESCRIPTION}`,
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000"
-  ),
+  metadataBase: new URL(SERVER_URL),
 };
 
 export default function RootLayout({
