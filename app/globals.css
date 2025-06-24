@@ -208,7 +208,6 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
-    min-height: 100svh;
+    @apply bg-background text-foreground min-h-screen ;
   }
 }
