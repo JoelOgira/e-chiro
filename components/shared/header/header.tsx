@@ -1,14 +1,12 @@
-import { ShoppingCart, UserIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { APP_NAME } from "@/lib/app-constants";
 import MaxWidthWrapper from "@/components/max-width-wrapper";
-import ThemeToggler from "@/components/theme-toggler";
+import Menu from "./menu";
 
 export default function Header() {
   return (
-    <header className="top-0 z-[100] w-full border-b py-2 lg:py-4">
+    <header className="top-0 w-full border-b py-2 lg:py-4">
       <MaxWidthWrapper className="flex items-center justify-between">
         <div className="flex justify-start">
           <Link href="/" className="flex items-center space-x-2">
@@ -24,19 +22,7 @@ export default function Header() {
             </span>
           </Link>
         </div>
-        <div className="flex items-center space-x-2">
-          <ThemeToggler />
-          <Button asChild variant="ghost">
-            <Link href="/cart">
-              <ShoppingCart /> Cart
-            </Link>
-          </Button>
-          <Button asChild>
-            <Link href="/sign-in">
-              <UserIcon /> Sign In
-            </Link>
-          </Button>
-        </div>
+        <Menu />
       </MaxWidthWrapper>
     </header>
   );
