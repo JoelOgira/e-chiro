@@ -22,15 +22,16 @@ export default function ProductCard({ product }: { product: any }) {
   };
 
   return (
-    <Card className="group cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-lg">
+    <Card className="group cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-lg p-0">
       <Link href={`/products/${product.slug}`}>
-        <div className="relative w-[300px] h-[300px] overflow-hidden mx-auto">
+        {/* Image section - no padding, covers full top */}
+        <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-72 overflow-hidden bg-gray-50">
           <Image
-            src={product.images[0]}
+            src={product.images[0] || "/placeholder.svg"}
             alt={product.name}
-            width={300}
-            height={300}
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            width={400}
+            height={256}
+            className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
           />
           {product.stock === 0 && (
             <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
@@ -46,21 +47,19 @@ export default function ProductCard({ product }: { product: any }) {
           )}
         </div>
 
+        {/* Content section - with padding */}
         <CardContent className="p-4 space-y-3">
           <div className="space-y-1">
             <p className="text-xs text-muted-foreground font-medium">
               {product.brand}
             </p>
-
             <h3 className="font-semibold text-base leading-tight line-clamp-2 group-hover:text-primary transition-colors hover:underline">
               {product.name}
             </h3>
           </div>
-
           <p className="text-xs text-muted-foreground line-clamp-2">
             {product.description}
           </p>
-
           <div className="flex items-center gap-2">
             <div className="flex items-center">
               {renderStars(product.rating)}
@@ -69,7 +68,6 @@ export default function ProductCard({ product }: { product: any }) {
               ({product.numReviews})
             </span>
           </div>
-
           <div className="flex items-center justify-between">
             <div className="space-y-1">
               <p className="text-xl font-bold text-primary">
@@ -81,7 +79,6 @@ export default function ProductCard({ product }: { product: any }) {
                 </p>
               )}
             </div>
-
             <Badge variant="outline" className="text-xs">
               {product.category}
             </Badge>
