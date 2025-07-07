@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
+import { Product } from "@/types/types";
 
-export default function ProductCard({ product }: { product: any }) {
+export default function ProductCard({ product }: { product: Product }) {
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
       <Star
@@ -70,9 +70,7 @@ export default function ProductCard({ product }: { product: any }) {
           </div>
           <div className="flex items-center justify-between">
             <div className="space-y-1">
-              <p className="text-xl font-bold text-primary">
-                ${product.price.toFixed(2)}
-              </p>
+              <p className="text-xl font-bold text-primary">${product.price}</p>
               {product.stock > 0 && product.stock <= 5 && (
                 <p className="text-[10px] text-orange-600 font-medium">
                   Only {product.stock} left!
