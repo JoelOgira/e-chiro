@@ -57,7 +57,7 @@ export default function ProductCard({ product }: { product: Product }) {
               {product.name}
             </h3>
           </div>
-          <p className="text-xs text-muted-foreground line-clamp-2">
+          <p className="hidden text-xs text-muted-foreground line-clamp-2">
             {product.description}
           </p>
           <div className="flex items-center gap-2">
@@ -68,7 +68,7 @@ export default function ProductCard({ product }: { product: Product }) {
               ({product.numReviews})
             </span>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="space-y-1">
               <p className="text-xl font-bold text-primary">${product.price}</p>
               {product.stock > 0 && product.stock <= 5 && (
@@ -77,7 +77,7 @@ export default function ProductCard({ product }: { product: Product }) {
                 </p>
               )}
             </div>
-            <Badge variant="outline" className="text-xs">
+            <Badge variant="outline" className="hidden md:block text-xs">
               {product.category}
             </Badge>
           </div>
