@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
 import { Product } from "@/types/types";
+import { formatCurrency } from "@/lib/utils";
 
 export default function ProductCard({ product }: { product: Product }) {
   const renderStars = (rating: number) => {
@@ -47,17 +48,16 @@ export default function ProductCard({ product }: { product: Product }) {
           )}
         </div>
 
-        {/* Content section - with padding */}
         <CardContent className="p-4 space-y-3">
           <div className="space-y-1">
-            <p className="text-xs text-muted-foreground font-medium">
+            <p className="text-xs text-muted-foreground font-medium hidden md:block">
               {product.brand}
             </p>
             <h3 className="font-semibold text-base leading-tight line-clamp-2 group-hover:text-primary transition-colors hover:underline">
               {product.name}
             </h3>
           </div>
-          <p className="hidden text-xs text-muted-foreground line-clamp-2">
+          <p className="text-xs text-muted-foreground line-clamp-2">
             {product.description}
           </p>
           <div className="flex items-center gap-2">
@@ -68,9 +68,11 @@ export default function ProductCard({ product }: { product: Product }) {
               ({product.numReviews})
             </span>
           </div>
-          <div className="flex flex-col md:flex-row items-center justify-between">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between">
             <div className="space-y-1">
-              <p className="text-xl font-bold text-primary">${product.price}</p>
+              <p className="text-xl font-bold text-primary">
+                {formatCurrency(product.price)}
+              </p>
               {product.stock > 0 && product.stock <= 5 && (
                 <p className="text-[10px] text-orange-600 font-medium">
                   Only {product.stock} left!
