@@ -25,7 +25,6 @@ export default function ProductCard({ product }: { product: Product }) {
   return (
     <Card className="group cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-lg p-0">
       <Link href={`/products/${product.slug}`}>
-        {/* Image section - no padding, covers full top */}
         <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-72 overflow-hidden bg-gray-50">
           <Image
             src={product.images[0] || "/placeholder.svg"}
