@@ -11,15 +11,15 @@ export default function ProductImages({ images }: { images: string[] }) {
       <Image
         src={images[current]}
         alt="product image"
-        width={1000}
-        height={1000}
+        width={800}
+        height={800}
         className="min-h-[300px] object-cover object-center"
       />
       <div className="flex gap-4">
         {images.map((image, index) => (
           <div
             className={cn(
-              "cursor-pointer border rounded hover:border-orange-200",
+              "cursor-pointer border hover:border-orange-200",
               current === index && "border-orange-600"
             )}
             key={image}
