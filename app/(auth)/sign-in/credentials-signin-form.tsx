@@ -6,6 +6,7 @@ import { z } from "zod";
 import { useActionState } from "react";
 import { signInSchema } from "@/lib/validators";
 import { signInWithCredentials } from "@/lib/actions/user.actions";
+import { useSearchParams } from "next/navigation";
 
 import {
   Form,
@@ -36,9 +37,15 @@ export default function CredentialsSignInForm() {
 
   const { formState } = form;
 
+  // callbackUrl
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
+
   return (
     <Form {...form}>
       <form action={formAction} className="space-y-4 md:space-y-6 text-start">
+        <input type="hidden" name="callbackUrl" value={callbackUrl} />
+
         <p aria-live="polite" className="text-destructive text-center">
           {state?.message}
         </p>
