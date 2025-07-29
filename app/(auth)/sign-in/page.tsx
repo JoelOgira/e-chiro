@@ -18,11 +18,14 @@ export const metadata: Metadata = {
   description: "Login into your e-chiro account",
 };
 
-export default async function SignInPage() {
+export default async function SignInPage(props: {
+  searchParams: Promise<{ callbackUrl: string }>;
+}) {
+  const { callbackUrl } = await props.searchParams;
   const session = await auth();
 
   if (session) {
-    redirect("/");
+    redirect(callbackUrl || "/");
   }
 
   return (
