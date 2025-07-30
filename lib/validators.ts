@@ -26,3 +26,31 @@ export const signInSchema = z.object({
     .min(6, "Password must be more than 6 characters")
     .max(32, "Password must be less than 32 characters"),
 });
+export type SignInSchema = z.infer<typeof signInSchema>;
+
+export const signUpSchema = z
+  .object({
+    name: z
+      .string()
+      .min(3, "Name is required")
+      .max(500, "Name should not exceed 500 characters"),
+    email: z
+      .string({ required_error: "Email is required" })
+      .min(1, "Email is required")
+      .email("Email required and must be a valid email"),
+    password: z
+      .string({ required_error: "Password is required" })
+      .min(1, "Password is required")
+      .min(6, "Password must be more than 6 characters")
+      .max(32, "Password must be less than 32 characters"),
+    confirmPassword: z
+      .string({ required_error: "Confirm password is required" })
+      .min(1, "Must confirm password")
+      .min(6, "Password must be more than 6 characters")
+      .max(32, "Password must be less than 32 characters"),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords don't match",
+    path: ["confirmPassword"],
+  });
+export type SignUpSchema = z.infer<typeof signUpSchema>;
