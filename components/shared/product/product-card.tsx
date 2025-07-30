@@ -47,16 +47,16 @@ export default function ProductCard({ product }: { product: Product }) {
           )}
         </div>
 
-        <CardContent className="p-4 space-y-3">
+        <CardContent className="p-2 space-y-2 md:p-4 md:space-y-3">
           <div className="space-y-1">
             <p className="text-xs text-muted-foreground font-medium hidden md:block">
               {product.brand}
             </p>
-            <h3 className="font-semibold text-base leading-tight line-clamp-2 group-hover:text-primary transition-colors hover:underline">
+            <h3 className="font-semibold text-sm leading-tight line-clamp-2 group-hover:text-primary transition-colors hover:underline md:text-base">
               {product.name}
             </h3>
           </div>
-          <p className="text-xs text-muted-foreground line-clamp-2">
+          <p className="text-xs hidden md:block text-muted-foreground line-clamp-2">
             {product.description}
           </p>
           <div className="flex items-center gap-2">
@@ -68,8 +68,8 @@ export default function ProductCard({ product }: { product: Product }) {
             </span>
           </div>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-            <div className="space-y-1">
-              <p className="text-xl font-bold text-primary">
+            <div className="flex items-center justify-between md:flex-col md:space-y-1">
+              <p className="text-lg font-bold text-primary">
                 {formatCurrency(product.price)}
               </p>
               {product.stock > 0 && product.stock <= 5 && (
