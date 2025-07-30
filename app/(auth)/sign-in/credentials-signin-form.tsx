@@ -19,7 +19,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Loader } from "lucide-react";
-import Link from "next/link";
 
 export default function CredentialsSignInForm() {
   const [state, formAction, pending] = useActionState(signInWithCredentials, {
@@ -54,7 +53,10 @@ export default function CredentialsSignInForm() {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel className="flex items-center">
+                <span>Email</span>
+                <span className="text-destructive">*</span>
+              </FormLabel>
               <FormControl>
                 <Input
                   placeholder="Enter your email"
@@ -63,7 +65,10 @@ export default function CredentialsSignInForm() {
                   autoComplete="email"
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage>
+                {formState.errors.email?.message ||
+                  state?.fieldErrors?.email?.[0]}
+              </FormMessage>
             </FormItem>
           )}
         />
@@ -72,7 +77,10 @@ export default function CredentialsSignInForm() {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <FormLabel className="flex items-center">
+                <span>Password</span>
+                <span className="text-destructive">*</span>
+              </FormLabel>
               <FormControl>
                 <Input
                   type="password"
@@ -81,7 +89,10 @@ export default function CredentialsSignInForm() {
                   disabled={formState.isSubmitting}
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage>
+                {formState.errors.password?.message ||
+                  state?.fieldErrors?.password?.[0]}
+              </FormMessage>
             </FormItem>
           )}
         />
@@ -93,13 +104,6 @@ export default function CredentialsSignInForm() {
           {pending && <Loader className="mr-2 h-4 w-4 animate-spin" />}
           Sign In
         </Button>
-
-        <div className="text-center text-sm text-muted-foreground">
-          Don&apos;t have an account?{" "}
-          <Link href="/sign-up" className="text-primary link" target="_self">
-            Sign Up
-          </Link>
-        </div>
       </form>
     </Form>
   );
