@@ -2,6 +2,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -51,6 +52,14 @@ export default async function SignInPage(props: {
         <CardContent className="space-y-3">
           <CredentialsSignInForm />
         </CardContent>
+        <CardFooter className="text-center text-sm text-muted-foreground mx-auto">
+          <p>
+            Don&apos;t have an account?{" "}
+            <Link href="/sign-up" className="text-primary hover:underline">
+              Sign Up
+            </Link>
+          </p>
+        </CardFooter>
       </Card>
     </div>
   );
