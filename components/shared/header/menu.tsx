@@ -7,7 +7,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { ShoppingCart, UserIcon, PanelRight } from "lucide-react";
+import { ShoppingCart, PanelRight } from "lucide-react";
 import Link from "next/link";
 import UserButton from "./user-button";
 
@@ -38,11 +38,7 @@ export default function Menu() {
                 <ShoppingCart className="size-5" /> Cart
               </Link>
             </Button>
-            <Button asChild variant="ghost">
-              <Link href="/sign-in">
-                <UserIcon className="size-5" /> Sign In
-              </Link>
-            </Button>
+            <UserButton />
           </SheetContent>
         </Sheet>
       </nav>
