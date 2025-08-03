@@ -69,7 +69,7 @@ export default function ProductCard({ product }: { product: Product }) {
           </div>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
             <div className="flex items-center justify-between md:flex-col md:space-y-1">
-              <p className="text-lg font-bold text-primary">
+              <p className="text-sm font-bold text-primary sm:text-lg">
                 {formatCurrency(product.price)}
               </p>
               {product.stock > 0 && product.stock <= 5 && (
